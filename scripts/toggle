@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+[[ $ZSH_EVAL_CONTEXT =~ :file$ ]] && SOURCED=1 || SOURCED=0
+
+PATH_FILE=$(pwd)/.path-save.txt
+
+if [[ ${SOURCED} -eq 0 ]]; then
+  echo "You need to source this file for it to work."
+  exit 1
+fi
+
+if [[ ! -f ${PATH_FILE} ]]; then
+    echo $PATH > ${PATH_FILE}
+    export PATH="${PATH}:$(pwd)/tools"
+else
+    export PATH="$(cat ${PATH_FILE})"
+    rm ${PATH_FILE}
+fi
+
+
+
+
