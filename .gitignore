@@ -1,3 +1,5 @@
 tools
 samples
 .path-save.txt
+*.out
+
